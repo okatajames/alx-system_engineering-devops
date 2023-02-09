@@ -1,10 +1,2 @@
 #!/bin/bash
-
-# Change the owner and group owner of _hello to vincent and staff respectively
-sudo chown vincent:staff _hello
-
-# Confirm the change
-OWNER=$(stat -c %U _hello)
-GROUP=$(stat -c %G _hello)
-echo "The owner of the file _hello has been changed to $OWNER."
-echo "The group owner of the file _hello has been changed to $GROUP."
+chown -h betty:holberton _hello
