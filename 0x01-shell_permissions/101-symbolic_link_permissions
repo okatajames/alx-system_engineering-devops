@@ -1,20 +1,10 @@
 #!/bin/bash
-#!/bin/bash
 
-# Get a list of all files and directories in the current working directory
-files_and_dirs=$(ls)
+# Change the owner and group owner of _hello to vincent and staff respectively
+sudo chown vincent:staff _hello
 
-# Loop through each file or directory
-for file_or_dir in $files_and_dirs; do
-  # Change the owner to "vincent"
-  sudo chown vincent $file_or_dir
-  
-  # Change the group owner to "staff"
-  sudo chgrp staff $file_or_dir
-done
-
-# Print a message indicating the ownership change has completed
-echo "Ownership change completed."
-
-This script uses the ls command to get a list of all files and directories in the current working directory, and then loops through each file or directory using a for loop. For each file or directory, it uses the sudo chown and sudo chgrp commands to change the owner and group owner, respectively. Finally, it prints a message indicating that the ownership change has completed.
-
+# Confirm the change
+OWNER=$(stat -c %U _hello)
+GROUP=$(stat -c %G _hello)
+echo "The owner of the file _hello has been changed to $OWNER."
+echo "The group owner of the file _hello has been changed to $GROUP."
